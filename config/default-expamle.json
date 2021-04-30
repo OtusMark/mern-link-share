@@ -1,0 +1,5 @@
+{
+  "port": "5000",
+  "jwtSecret": "secret token string",
+  "mongoUri": "mongodb+srv://User:<password>@cluster0.scv5p.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+}
