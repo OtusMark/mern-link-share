@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "server": "nodemon app.js"
+    "server": "nodemon app.js",
+    "client": "yarn --cwd client start",
+    "dev": "concurrently \"yarn server\" \"yarn client\""
   },
   "author": "Kadiner Mark <dasistmail765@gmail.com>",
   "license": "MIT",
