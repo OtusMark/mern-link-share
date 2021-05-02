@@ -1,25 +1,47 @@
 import {ChangeEvent, useState} from "react";
-import {useHttp} from "../hooks/http.hook";
+import {login, register} from "../bll/reducers/auth-reducer";
+import {useDispatch} from "react-redux";
+import {AppDispatchT} from "../bll/store";
 
 export const AuthPage = () => {
 
-    const {loading, error, request} = useHttp()
+    const dispatch = useDispatch<AppDispatchT>()
+
+    // const auth = useContext(AuthContext)
+    // const {loading, error, request, clearError} = useHttp()
 
     const [form, setForm] = useState({
         email: '', password: ''
     })
+
+    // useEffect(() => {
+    // }, [error, clearError])
 
     const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setForm({...form, [e.target.name]: e.target.value})
     }
 
     const registerHandler = async () => {
-        try {
-            const data = await request('/api/auth/register', 'POST', {...form})
-            console.log('Data', data)
-        } catch (err) {
 
-        }
+        dispatch(register(form))
+
+        // try {
+        //     const data = await request('/api/auth/register', 'POST', {...form})
+        //     console.log('Data: ', data.message)
+        // } catch (err) {
+        //
+        // }
+    }
+
+    const loginHandler = async () => {
+
+        dispatch(login(form))
+        // try {
+        //     const data = await request('/api/auth/login', 'POST', {...form})
+        //     console.log('Data: ', data.message)
+        // } catch (err) {
+        //
+        // }
     }
 
     return (
@@ -41,12 +63,13 @@ export const AuthPage = () => {
                        name="password"
                        onChange={changeHandler}/>
             </div>
-            <button disabled={loading}
+            <button onClick={loginHandler}
+                    // disabled={loading}
             >
                 Войти
             </button>
             <button onClick={registerHandler}
-                    disabled={loading}
+                    // disabled={loading}
             >
                 Зарегистрироваться
             </button>
