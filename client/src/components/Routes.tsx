@@ -20,7 +20,7 @@ export const Routes: React.FC<PropsT> = (props) => {
                 <Route path="/create" exact>
                     <CreatePage/>
                 </Route>
-                <Route path="/details/:id">
+                <Route path="/detail/:id">
                     <DetailPage/>
                 </Route>
                 <Redirect to="/create"/>

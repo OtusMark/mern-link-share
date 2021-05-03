@@ -3,9 +3,11 @@ import {configureStore} from "@reduxjs/toolkit";
 import thunk from "redux-thunk";
 import {authReducer} from "./reducers/auth-reducer";
 import {loadState, saveState} from "../utils/localStorage";
+import {linkReducer} from "./reducers/link-reducer";
 
 const rootReducer = combineReducers({
-    auth: authReducer
+    auth: authReducer,
+    link: linkReducer
 })
 
 export const store = configureStore({
@@ -16,7 +18,8 @@ export const store = configureStore({
 
 store.subscribe(() => {
     saveState({
-        auth: store.getState().auth
+        auth: store.getState().auth,
+        link: store.getState().link
     })
 })
 

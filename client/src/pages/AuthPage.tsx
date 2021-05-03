@@ -7,41 +7,20 @@ export const AuthPage = () => {
 
     const dispatch = useDispatch<AppDispatchT>()
 
-    // const auth = useContext(AuthContext)
-    // const {loading, error, request, clearError} = useHttp()
-
     const [form, setForm] = useState({
         email: '', password: ''
     })
-
-    // useEffect(() => {
-    // }, [error, clearError])
 
     const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setForm({...form, [e.target.name]: e.target.value})
     }
 
     const registerHandler = async () => {
-
         dispatch(register(form))
-
-        // try {
-        //     const data = await request('/api/auth/register', 'POST', {...form})
-        //     console.log('Data: ', data.message)
-        // } catch (err) {
-        //
-        // }
     }
 
     const loginHandler = async () => {
-
         dispatch(login(form))
-        // try {
-        //     const data = await request('/api/auth/login', 'POST', {...form})
-        //     console.log('Data: ', data.message)
-        // } catch (err) {
-        //
-        // }
     }
 
     return (
@@ -53,6 +32,7 @@ export const AuthPage = () => {
                        placeholder="Введите Email"
                        type="text"
                        name="email"
+                       value={form.email}
                        onChange={changeHandler}/>
             </div>
             <div>
@@ -61,6 +41,7 @@ export const AuthPage = () => {
                        placeholder="Введите Пароль"
                        type="password"
                        name="password"
+                       value={form.password}
                        onChange={changeHandler}/>
             </div>
             <button onClick={loginHandler}

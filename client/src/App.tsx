@@ -2,6 +2,7 @@ import React from 'react';
 import {Routes} from "./components/Routes";
 import {useSelector} from "react-redux";
 import {AppRootStateT} from "./bll/store";
+import {Navbar} from "./components/Navbar";
 
 function App() {
 
@@ -10,6 +11,7 @@ function App() {
 
     return (
         <div>
+            <Navbar/>
             <Routes isAuthenticated={!!token}/>
         </div>
 

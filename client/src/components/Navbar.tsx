@@ -1,15 +1,14 @@
-import {MouseEvent, MouseEventHandler} from "react";
 import {NavLink} from 'react-router-dom'
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {AppDispatchT} from "../bll/store";
-import { logout } from "../bll/reducers/auth-reducer";
+import {logout} from "../bll/reducers/auth-reducer";
 
 export const Navbar = () => {
 
     const dispatch = useDispatch<AppDispatchT>()
 
     const logoutHandler = () => {
-        // dispatch<AppDispatchT>(logout())
+        dispatch(logout())
     }
 
     return (

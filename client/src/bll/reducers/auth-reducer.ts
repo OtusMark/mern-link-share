@@ -18,22 +18,6 @@ export const login = createAsyncThunk('auth/login', async (body: LoginRegisterDa
     }
 })
 
-export const logout = createAsyncThunk('auth/logout', async (body: LoginRegisterDataT, thunkAPI) => {
-
-    const res = await authAPI.login(body)
-    try {
-        if (res.status === 200) {
-            return (res.data)
-        } else {
-            return thunkAPI.rejectWithValue({})
-        }
-
-    } catch (err) {
-        console.log(err)
-        return thunkAPI.rejectWithValue({})
-    }
-})
-
 export const register = createAsyncThunk('auth/register', async (body: LoginRegisterDataT, thunkAPI) => {
 
     const res = await authAPI.login(body)
@@ -81,3 +65,5 @@ const slice = createSlice({
 })
 
 export const authReducer = slice.reducer
+
+export const {logout} = slice.actions
